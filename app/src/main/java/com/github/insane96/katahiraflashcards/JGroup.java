@@ -1,6 +1,6 @@
 package com.github.insane96.katahiraflashcards;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public enum JGroup {
     MY("my", List.of(JChar.MYA, JChar.MYU, JChar.MYO)),
     RY("ry", List.of(JChar.RYA, JChar.RYU, JChar.RYO));
 
-    private static final Map<String, JGroup> NAME_MAP = new HashMap<>();
+    public static final Map<String, JGroup> NAME_MAP = new LinkedHashMap<>();
 
     public final String name;
     public final List<JChar> jChars;
