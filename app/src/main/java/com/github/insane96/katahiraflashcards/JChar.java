@@ -80,7 +80,35 @@ public enum JChar {
     WA('わ', 'ワ', "wa"),
     WO('を', 'ヲ', "wo"),
 
-    N('ん', 'ン', "n");
+    N('ん', 'ン', "n"),
+
+    KYA('きゃ', 'キャ', "kya"),
+    KYU('きゅ', 'キュ', "kyu"),
+    KYO('きょ', 'キョ', "kyo"),
+
+    SHA('しゃ', 'シャ', "sha"),
+    SHU('しゅ', 'シュ', "shu"),
+    SHO('しょ', 'ショ', "sho"),
+
+    CHA('ちゃ', 'チャ', "cha"),
+    CHU('ちゅ', 'チュ', "chu"),
+    CHO('ちょ', 'チョ', "cho"),
+
+    NYA('にゃ', 'ニャ', "nya"),
+    NYU('にゅ', 'ニュ', "nyu"),
+    NYO('にょ', 'ニョ', "nyo"),
+
+    HYA('ひゃ', 'ヒャ', "hya"),
+    HYU('ひゅ', 'ヒュ', "hyu"),
+    HYO('ひょ', 'ヒョ', "hyo"),
+
+    MYA('みゃ', 'ミャ', "mya"),
+    MYU('みゅ', 'ミュ', "myu"),
+    MYO('みょ', 'ミョ', "myo"),
+
+    RYA('りゃ', 'リャ', "rya"),
+    RYU('りゅ', 'リュ', "ryu"),
+    RYO('りょ', 'リョ', "ryo"),;
 
     public char hiragana;
     public char katakana;
