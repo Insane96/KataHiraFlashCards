@@ -1,6 +1,7 @@
 package com.github.insane96.katahiraflashcards;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,12 +28,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        for (JGroup group : JGroup.NAME_MAP.values()) {
-            binding.txtTest.append(group.name + ": ");
-            for (JChar jChar : group.jChars) {
-                binding.txtTest.append(jChar.roomaji + " " + jChar.hiragana + " " + jChar.katakana);
-            }
-            binding.txtTest.append("\n");
+        for (JGroup jGroup : JGroup.NAME_MAP.values()) {
+            Button button = new Button(this);
+            int resId = getResources().getIdentifier("jgroup_" + jGroup.name.toLowerCase(), "string", getPackageName());
+            button.setText(getString(resId));
+            binding.scrGroupListLL.addView(button);
         }
     }
 }

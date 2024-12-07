@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">KataHira FlashCards</string>
+    <string name="btnStart">Start!</string>
+    <string name="jgroup_vowels">Vowels</string>
+    <string name="jgroup_k" translatable="false">K-</string>
+    <string name="jgroup_g" translatable="false">G-</string>
+    <string name="jgroup_s" translatable="false">S-</string>
+    <string name="jgroup_z" translatable="false">Z-</string>
+    <string name="jgroup_t" translatable="false">T-</string>
+    <string name="jgroup_n" translatable="false">N-</string>
+    <string name="jgroup_h" translatable="false">H-</string>
+    <string name="jgroup_b" translatable="false">B-</string>
+    <string name="jgroup_p" translatable="false">P-</string>
+    <string name="jgroup_m" translatable="false">M-</string>
+    <string name="jgroup_y" translatable="false">Y-</string>
+    <string name="jgroup_r" translatable="false">R-</string>
+    <string name="jgroup_wn" translatable="false">W- &amp; N</string>
+    <string name="jgroup_ky" translatable="false">KY-</string>
+    <string name="jgroup_sh" translatable="false">SH-</string>
+    <string name="jgroup_ch" translatable="false">CH-</string>
+    <string name="jgroup_ny" translatable="false">NY-</string>
+    <string name="jgroup_hy" translatable="false">HY-</string>
+    <string name="jgroup_my" translatable="false">MY-</string>
+    <string name="jgroup_ry" translatable="false">RY-</string>
 </resources>
