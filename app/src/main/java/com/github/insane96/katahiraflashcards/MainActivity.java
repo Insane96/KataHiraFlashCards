@@ -1,6 +1,7 @@
 package com.github.insane96.katahiraflashcards;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.github.insane96.katahiraflashcards.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,5 +40,25 @@ public class MainActivity extends AppCompatActivity {
             groupButtons.add(button);
             binding.scrGroupListLL.addView(button);
         }
+    }
+
+    public void onStartClick(View v) {
+        binding.btnStart.setVisibility(View.GONE);
+        //binding.scrGroupList.setVisibility(View.GONE);
+
+        ArrayList<JChar> chars = new ArrayList<>();
+        for (GroupButton button : groupButtons) {
+            if (button.isActivated())
+                chars.addAll(button.getJGroup().jChars);
+
+            button.setVisibility(View.GONE);
+        }
+        Collections.shuffle(chars);
+        chars.forEach(jChar -> {
+
+            //Button btnChar = new Button(this);
+            //binding.scrGroupListLL.addView(btnChar);
+            //btnChar.setText(jChar.roomaji + " " + jChar.hiragana + " " + jChar.katakana);
+        });
     }
 }

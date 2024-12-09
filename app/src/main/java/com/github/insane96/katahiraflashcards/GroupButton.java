@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat;
 
 public class GroupButton extends AppCompatButton {
     private JGroup jGroup;
-    private boolean isActive;
 
     public GroupButton(@NonNull Context context, JGroup jGroup) {
         super(context);
@@ -19,15 +18,10 @@ public class GroupButton extends AppCompatButton {
     }
 
     public void switchActiveState() {
-        this.isActive = !this.isActive;
-        setActivated(this.isActive);
+        this.setActivated(!this.isActivated());
     }
 
     public JGroup getJGroup() {
         return this.jGroup;
-    }
-
-    public boolean isActive() {
-        return this.isActive;
     }
 }
