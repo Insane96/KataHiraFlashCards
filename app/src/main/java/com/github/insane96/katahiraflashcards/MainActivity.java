@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
     List<GroupButton> groupButtons = new ArrayList<>();
+    short currentChar = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +55,16 @@ public class MainActivity extends AppCompatActivity {
             button.setVisibility(View.GONE);
         }
         Collections.shuffle(chars);
-        chars.forEach(jChar -> {
+        JChar currentJChar = chars.get(currentChar++);
+        CardButton btnChar = new CardButton(this, currentJChar, true, false);
+        binding.scrGroupListLL.addView(btnChar);
+
+        /*chars.forEach(jChar -> {
+
 
             //Button btnChar = new Button(this);
             //binding.scrGroupListLL.addView(btnChar);
             //btnChar.setText(jChar.roomaji + " " + jChar.hiragana + " " + jChar.katakana);
-        });
+        });*/
     }
 }
