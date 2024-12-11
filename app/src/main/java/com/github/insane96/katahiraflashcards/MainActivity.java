@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -15,12 +16,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CardButton.OnNextCardListener {
 
     ActivityMainBinding binding;
 
     List<GroupButton> groupButtons = new ArrayList<>();
+
+    ArrayList<JChar> chars;
     short currentChar = 0;
+    CardButton currentCardButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,27 +48,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartClick(View v) {
-        binding.btnStart.setVisibility(View.GONE);
-        //binding.scrGroupList.setVisibility(View.GONE);
-
-        ArrayList<JChar> chars = new ArrayList<>();
+        chars = new ArrayList<>();
         for (GroupButton button : groupButtons) {
             if (button.isActivated())
                 chars.addAll(button.getJGroup().jChars);
-
-            button.setVisibility(View.GONE);
         }
+        if (chars.isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setMessage("Please select at least one group")
+                    .setTitle("Can't proceed")
+                    .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+            return;
+        }
+        binding.btnStart.setVisibility(View.GONE);
+        binding.scrGroupList.setVisibility(View.GONE);
         Collections.shuffle(chars);
-        JChar currentJChar = chars.get(currentChar++);
-        CardButton btnChar = new CardButton(this, currentJChar, true, false);
-        binding.scrGroupListLL.addView(btnChar);
+        JChar currentJChar = chars.get(currentChar);
+        currentCardButton = new CardButton(this, currentJChar, true, false, this);
+        binding.getRoot().addView(currentCardButton);
+    }
 
-        /*chars.forEach(jChar -> {
-
-
-            //Button btnChar = new Button(this);
-            //binding.scrGroupListLL.addView(btnChar);
-            //btnChar.setText(jChar.roomaji + " " + jChar.hiragana + " " + jChar.katakana);
-        });*/
+    @Override
+    public void onNextCard() {
+        binding.getRoot().removeView(currentCardButton);
+        if (++currentChar >= chars.size()) {
+            binding.btnStart.setVisibility(View.VISIBLE);
+            binding.scrGroupList.setVisibility(View.VISIBLE);
+            return;
+        }
+        JChar currentJChar = chars.get(currentChar);
+        currentCardButton = new CardButton(this, currentJChar, true, false, this);
+        binding.getRoot().addView(currentCardButton);
     }
 }
