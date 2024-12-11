@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
 
     List<GroupButton> groupButtons = new ArrayList<>();
 
-    ArrayList<JChar> chars;
+    ArrayList<JChar> chars = new ArrayList<>();
     short currentChar = 0;
     CardButton currentCardButton;
 
@@ -36,6 +37,16 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (currentCardButton != null)
+                    backToMain();
+                else
+                    finish();
+            }
         });
 
         /*for (JChar jChar : JChar.values()) {
@@ -54,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
     }
 
     public void onStartClick(View v) {
-        chars = new ArrayList<>();
+        chars.clear();
         for (GroupButton button : groupButtons) {
             if (button.isActivated())
                 chars.addAll(button.getJGroup().jChars);
@@ -92,9 +103,7 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
     public void onNextCard() {
         binding.getRoot().removeView(currentCardButton);
         if (++currentChar >= chars.size()) {
-            binding.btnStart.setVisibility(View.VISIBLE);
-            binding.scrGroupList.setVisibility(View.VISIBLE);
-            currentChar = 0;
+            backToMain();
             return;
         }
         createNextCardButton();
@@ -104,6 +113,14 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         JChar currentJChar = chars.get(currentChar);
         currentCardButton = new CardButton(this, currentJChar, getTypeFromRadioButton(), this);
         binding.getRoot().addView(currentCardButton);
+    }
+
+    public void backToMain() {
+        binding.btnStart.setVisibility(View.VISIBLE);
+        binding.scrGroupList.setVisibility(View.VISIBLE);
+        binding.getRoot().removeView(currentCardButton);
+        currentCardButton = null;
+        currentChar = 0;
     }
 
     public CardButton.Type getTypeFromRadioButton() {
