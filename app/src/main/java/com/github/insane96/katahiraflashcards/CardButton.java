@@ -28,7 +28,7 @@ public class CardButton extends AppCompatButton {
         this.onNextCardListener = onNextCardListener;
 
         if (this.inverse)
-            this.setText(jChar.roomaji);
+            this.setText(jChar.getRoomajiResId(this.getContext()));
         else if (this.hiragana)
             this.setText(jChar.hiragana);
         else
@@ -52,7 +52,7 @@ public class CardButton extends AppCompatButton {
         if (this.inverse)
             this.setText(this.jChar.hiragana + " " + this.jChar.katakana);
         else
-            this.setText(this.jChar.roomaji);
+            this.setText(jChar.getRoomajiResId(this.getContext()));
         this.hasBeenFlipped = true;
     }
 

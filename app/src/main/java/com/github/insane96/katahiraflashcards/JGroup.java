@@ -25,7 +25,12 @@ public enum JGroup {
     NY("ny", List.of(JChar.NYA, JChar.NYU, JChar.NYO)),
     HY("hy", List.of(JChar.HYA, JChar.HYU, JChar.HYO)),
     MY("my", List.of(JChar.MYA, JChar.MYU, JChar.MYO)),
-    RY("ry", List.of(JChar.RYA, JChar.RYU, JChar.RYO));
+    RY("ry", List.of(JChar.RYA, JChar.RYU, JChar.RYO)),
+    GY("gy", List.of(JChar.GYA, JChar.GYU, JChar.GYO)),
+    JY("jy", List.of(JChar.JYA, JChar.JYU, JChar.JYO)),
+    DY("dy", List.of(JChar.DYA, JChar.DYU, JChar.DYO)),
+    BY("by", List.of(JChar.BYA, JChar.BYU, JChar.BYO)),
+    PY("py", List.of(JChar.PYA, JChar.PYU, JChar.PYO));
 
     public static final Map<String, JGroup> NAME_MAP = new LinkedHashMap<>();
 

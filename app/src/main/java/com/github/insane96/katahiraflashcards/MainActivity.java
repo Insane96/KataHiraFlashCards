@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
             return insets;
         });
 
+        /*for (JChar jChar : JChar.values()) {
+            Log.i("JChar", "<string name=\"jchar_" + jChar.name().toLowerCase() + "\">" + jChar.roomaji + "</string>");
+        }*/
+
         for (JGroup jGroup : JGroup.NAME_MAP.values()) {
             GroupButton button = new GroupButton(this, jGroup);
             int resId = getResources().getIdentifier("jgroup_" + jGroup.name.toLowerCase(), "string", getPackageName());
@@ -55,8 +59,8 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         }
         if (chars.isEmpty()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                    .setMessage("Please select at least one group")
-                    .setTitle("Can't proceed")
+                    .setTitle(R.string.select_one_title)
+                    .setMessage(R.string.select_one_message)
                     .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
             return;
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         if (++currentChar >= chars.size()) {
             binding.btnStart.setVisibility(View.VISIBLE);
             binding.scrGroupList.setVisibility(View.VISIBLE);
+            currentChar = 0;
             return;
         }
         JChar currentJChar = chars.get(currentChar);

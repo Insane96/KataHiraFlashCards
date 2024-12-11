@@ -1,5 +1,7 @@
 package com.github.insane96.katahiraflashcards;
 
+import android.content.Context;
+
 public enum JChar {
     A("あ", "ア", "a"),
     I("い", "イ", "i"),
@@ -36,6 +38,12 @@ public enum JChar {
     TSU("つ", "ツ", "tsu"),
     TE("て", "テ", "te"),
     TO("と", "ト", "to"),
+
+    DA("だ", "ダ", "da"),
+    DI("ぢ", "ヂ", "di"),
+    DU("づ", "ヅ", "du"),
+    DE("で", "デ", "de"),
+    DO("ど", "ド", "do"),
 
     NA("な", "ナ", "na"),
     NI("に", "ニ", "ni"),
@@ -107,11 +115,31 @@ public enum JChar {
 
     RYA("りゃ", "リャ", "rya"),
     RYU("りゅ", "リュ", "ryu"),
-    RYO("りょ", "リョ", "ryo"),;
+    RYO("りょ", "リョ", "ryo"),
 
-    public String hiragana;
-    public String katakana;
-    public String roomaji;
+    GYA("ぎゃ", "ギャ", "gya"),
+    GYU("ぎゅ", "ギュ", "gyu"),
+    GYO("ぎょ", "ギョ", "gyo"),
+
+    JYA("じゃ", "ジャ", "jya"),
+    JYU("じゅ", "ジュ", "jyu"),
+    JYO("じょ", "ジョ", "jyo"),
+
+    DYA("ぢゃ", "ヂャ", "dya"),
+    DYU("ぢゅ", "ヂュ", "dyu"),
+    DYO("ぢょ", "ヂョ", "dyo"),
+
+    BYA("びゃ", "ビャ", "bya"),
+    BYU("びゅ", "ビュ", "byu"),
+    BYO("びょ", "ビョ", "byo"),
+
+    PYA("ぴゃ", "ピャ", "pya"),
+    PYU("ぴゅ", "ピュ", "pyu"),
+    PYO("ぴょ", "ピョ", "pyo");
+
+    public final String hiragana;
+    public final String katakana;
+    public final String roomaji;
 
     JChar(String hiragana, String katakana, String roomaji) {
         this.hiragana = hiragana;
@@ -119,15 +147,7 @@ public enum JChar {
         this.roomaji = roomaji;
     }
 
-    public String getHiragana() {
-        return this.hiragana;
-    }
-
-    public String getKatakana() {
-        return this.katakana;
-    }
-
-    public String getRoomaji() {
-        return this.roomaji;
+    public int getRoomajiResId(Context context) {
+        return context.getResources().getIdentifier("jchar_" + this.roomaji.toLowerCase(), "string", context.getPackageName());
     }
 }
