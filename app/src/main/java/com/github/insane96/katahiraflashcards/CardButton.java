@@ -8,30 +8,28 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class CardButton extends AppCompatButton {
     public final JChar jChar;
-    public boolean hiragana;
-    public boolean inverse;
+    public Type type;
 
     private boolean hasBeenFlipped;
 
-    private OnNextCardListener onNextCardListener;
+    private final OnNextCardListener onNextCardListener;
 
     ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(
             ConstraintLayout.LayoutParams.MATCH_PARENT,
             ConstraintLayout.LayoutParams.MATCH_PARENT);
 
-    public CardButton(@NonNull Context context, JChar jChar, boolean hiragana, boolean inverse, OnNextCardListener onNextCardListener) {
+    public CardButton(@NonNull Context context, JChar jChar, Type type, OnNextCardListener onNextCardListener) {
         super(context);
         this.jChar = jChar;
-        this.hiragana = hiragana;
-        this.inverse = inverse;
+        this.type = type;
 
         this.onNextCardListener = onNextCardListener;
 
-        if (this.inverse)
+        if (this.type == Type.ROOMAJI)
             this.setText(jChar.getRoomajiResId(this.getContext()));
-        else if (this.hiragana)
+        else if (this.type == Type.HIRAGANA)
             this.setText(jChar.hiragana);
-        else
+        else if (this.type == Type.KATAKANA)
             this.setText(jChar.katakana);
 
         this.setLayoutParams(layoutParams);
@@ -49,11 +47,17 @@ public class CardButton extends AppCompatButton {
             this.onNextCardListener.onNextCard();
             return;
         }
-        if (this.inverse)
-            this.setText(this.jChar.hiragana + " " + this.jChar.katakana);
+        if (this.type == Type.ROOMAJI)
+            this.setText(getContext().getString(R.string.hira_kata, jChar.hiragana, jChar.katakana));
         else
             this.setText(jChar.getRoomajiResId(this.getContext()));
         this.hasBeenFlipped = true;
+    }
+
+    public enum Type {
+        HIRAGANA,
+        KATAKANA,
+        ROOMAJI
     }
 
     public interface OnNextCardListener {

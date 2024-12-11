@@ -14,7 +14,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,21 +27,88 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnStart"
+    <LinearLayout
+        android:id="@+id/llBottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#A23B65FF"
-        android:onClick="onStartClick"
-        android:text="@string/btnStart"
-        android:textSize="48sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrGroupList" />
+        app:layout_constraintTop_toBottomOf="@+id/rbgType">
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#A23B65FF"
+            android:onClick="onStartClick"
+            android:text="@string/btnStart"
+            android:textSize="64sp" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp"
+            android:onClick="onInfoClick"
+            app:srcCompat="@android:drawable/ic_dialog_info" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rbgType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:checkedButton="@id/rbHiragana"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrGroupList">
+
+        <RadioButton
+            android:id="@+id/rbHiragana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hiragana" />
+
+        <RadioButton
+            android:id="@+id/rbKatakana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/katakana" />
+
+        <RadioButton
+            android:id="@+id/rbRoomaji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/roomaji" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

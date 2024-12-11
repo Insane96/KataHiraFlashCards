@@ -113,4 +113,10 @@
     <string name="jchar_pyu">pyu</string>
     <string name="jchar_pyo">pyo</string>
     <string name="select_one_title">Impossibile iniziare</string>
+    <string name="info_title">Informazioni sull\'utilizzo</string>
+    <string name="info_message">Selezionare uno o più gruppi e premere Inizia per cominciare.\nTenere premuto il pulsante \"Inizia\" invertirà la selezione</string>
+    <string name="hira_kata">%s %s</string>
+    <string name="hiragana">Hiragana</string>
+    <string name="katakana">Katakana</string>
+    <string name="roomaji">Roomaji</string>
 </resources>

@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
             groupButtons.add(button);
             binding.scrGroupListLL.addView(button);
         }
+
+        binding.btnStart.setOnLongClickListener(this::onStartLongClick);
     }
 
     public void onStartClick(View v) {
@@ -68,9 +70,22 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         binding.btnStart.setVisibility(View.GONE);
         binding.scrGroupList.setVisibility(View.GONE);
         Collections.shuffle(chars);
-        JChar currentJChar = chars.get(currentChar);
-        currentCardButton = new CardButton(this, currentJChar, true, false, this);
-        binding.getRoot().addView(currentCardButton);
+        createNextCardButton();
+    }
+
+    public boolean onStartLongClick(View v) {
+        for (GroupButton button : groupButtons) {
+            button.setActivated(!button.isActivated());
+        }
+        return true;
+    }
+
+    public void onInfoClick(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle(R.string.info_title)
+                .setMessage(R.string.info_message)
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.show();
     }
 
     @Override
@@ -82,8 +97,22 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
             currentChar = 0;
             return;
         }
+        createNextCardButton();
+    }
+
+    public void createNextCardButton() {
         JChar currentJChar = chars.get(currentChar);
-        currentCardButton = new CardButton(this, currentJChar, true, false, this);
+        currentCardButton = new CardButton(this, currentJChar, getTypeFromRadioButton(), this);
         binding.getRoot().addView(currentCardButton);
+    }
+
+    public CardButton.Type getTypeFromRadioButton() {
+        if (binding.rbHiragana.isChecked())
+            return CardButton.Type.HIRAGANA;
+        else if (binding.rbKatakana.isChecked())
+            return CardButton.Type.KATAKANA;
+        else if (binding.rbRoomaji.isChecked())
+            return CardButton.Type.ROOMAJI;
+        return CardButton.Type.HIRAGANA;
     }
 }

@@ -138,4 +138,10 @@
     <string name="jchar_pya">pya</string>
     <string name="jchar_pyu">pyu</string>
     <string name="jchar_pyo">pyo</string>
+    <string name="info_title">How to use</string>
+    <string name="info_message">Select one or more groups and press Start to … start.\nPress and hold Start to invert the current selection</string>
+    <string name="hira_kata">%s %s</string>
+    <string name="hiragana">Hiragana</string>
+    <string name="katakana">Katakana</string>
+    <string name="roomaji">Roomaji</string>
 </resources>
