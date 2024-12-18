@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">KataHira FlashCards</string>
+    <string name="app_name">KataHira Flashcards</string>
     <string name="btnStart">始める</string>
     <string name="select_one_title">" 開始できません"</string>
     <string name="select_one_message">少なくとも 1 つのグループを選択してください</string>
