@@ -16,6 +16,7 @@ import com.github.insane96.katahiraflashcards.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements CardButton.OnNextCardListener {
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
     ArrayList<JChar> chars = new ArrayList<>();
     short currentChar = 0;
     CardButton currentCardButton;
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         }
 
         binding.btnStart.setOnLongClickListener(this::onStartLongClick);
+        binding.chkRoomaji.setOnCheckedChangeListener(this::onCheckRoomaji);
     }
 
     public void onStartClick(View v) {
@@ -124,12 +127,19 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
     }
 
     public CardButton.Type getTypeFromRadioButton() {
-        if (binding.rbHiragana.isChecked())
-            return CardButton.Type.HIRAGANA;
-        else if (binding.rbKatakana.isChecked())
-            return CardButton.Type.KATAKANA;
-        else if (binding.rbRoomaji.isChecked())
+        if (binding.chkRoomaji.isChecked())
             return CardButton.Type.ROOMAJI;
+        else if (binding.chkHiragana.isChecked() && binding.chkKatakana.isChecked())
+            return random.nextBoolean() ? CardButton.Type.HIRAGANA : CardButton.Type.KATAKANA;
+        else if (binding.chkHiragana.isChecked())
+            return CardButton.Type.HIRAGANA;
+        else if (binding.chkKatakana.isChecked())
+            return CardButton.Type.KATAKANA;
         return CardButton.Type.HIRAGANA;
+    }
+
+    public void onCheckRoomaji(View v, boolean isChecked) {
+        binding.chkHiragana.setEnabled(!isChecked);
+        binding.chkKatakana.setEnabled(!isChecked);
     }
 }

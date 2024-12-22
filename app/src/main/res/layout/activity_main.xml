@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbgType">
+        app:layout_constraintTop_toBottomOf="@+id/llType">
 
         <Button
             android:id="@+id/btnStart"
@@ -67,35 +67,37 @@
 
     </LinearLayout>
 
-    <RadioGroup
-        android:id="@+id/rbgType"
+    <LinearLayout
+        android:id="@+id/llType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:checkedButton="@id/rbHiragana"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrGroupList">
 
-        <RadioButton
-            android:id="@+id/rbHiragana"
+        <CheckBox
+            android:id="@+id/chkHiragana"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/hiragana" />
 
-        <RadioButton
-            android:id="@+id/rbKatakana"
+        <CheckBox
+            android:id="@+id/chkKatakana"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:text="@string/katakana" />
 
-        <RadioButton
-            android:id="@+id/rbRoomaji"
+        <CheckBox
+            android:id="@+id/chkRoomaji"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:text="@string/roomaji" />
-    </RadioGroup>
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
