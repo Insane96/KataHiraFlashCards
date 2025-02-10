@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.github.insane96.katahiraflashcards"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.github.insane96.katahiraflashcards"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 2
         versionName = "1.0.0"
 
