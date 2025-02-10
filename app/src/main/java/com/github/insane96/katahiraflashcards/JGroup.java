@@ -11,6 +11,7 @@ public enum JGroup {
     S("s", List.of(JChar.SA, JChar.SHI, JChar.SU, JChar.SE, JChar.SO)),
     Z("z", List.of(JChar.ZA, JChar.JI, JChar.ZU, JChar.ZE, JChar.ZO)),
     T("t", List.of(JChar.TA, JChar.CHI, JChar.TSU, JChar.TE, JChar.TO)),
+    D("d", List.of(JChar.DA, JChar.DI, JChar.DU, JChar.DE, JChar.DO)),
     N("n", List.of(JChar.NA, JChar.NI, JChar.NU, JChar.NE, JChar.NO)),
     H("h", List.of(JChar.HA, JChar.HI, JChar.FU, JChar.HE, JChar.HO)),
     B("b", List.of(JChar.BA, JChar.BI, JChar.BU, JChar.BE, JChar.BO)),
