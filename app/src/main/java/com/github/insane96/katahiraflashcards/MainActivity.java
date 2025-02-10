@@ -2,6 +2,8 @@ package com.github.insane96.katahiraflashcards;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         }
 
         binding.btnStart.setOnLongClickListener(this::onStartLongClick);
+        binding.chkHiragana.setOnCheckedChangeListener(this::onUnckeckHiraKata);
+        binding.chkKatakana.setOnCheckedChangeListener(this::onUnckeckHiraKata);
         binding.chkRoomaji.setOnCheckedChangeListener(this::onCheckRoomaji);
     }
 
@@ -136,6 +140,13 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         else if (binding.chkKatakana.isChecked())
             return CardButton.Type.KATAKANA;
         return CardButton.Type.HIRAGANA;
+    }
+
+    private void onUnckeckHiraKata(View v, boolean b) {
+        if (!binding.chkHiragana.isChecked() && !binding.chkKatakana.isChecked()) {
+            ((CheckBox)v).setChecked(true);
+            Toast.makeText(this, R.string.uncheck_toast, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onCheckRoomaji(View v, boolean isChecked) {

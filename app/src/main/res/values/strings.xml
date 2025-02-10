@@ -140,6 +140,7 @@
     <string name="jchar_pyo">pyo</string>
     <string name="info_title">How to use</string>
     <string name="info_message">Select one or more groups and press Start to begin. Press and hold Start to invert the current selection</string>
+    <string name="uncheck_toast">One between hiragana and katakana must be selected</string>
     <string name="hira_kata">%s %s</string>
     <string name="hiragana">Hiragana</string>
     <string name="katakana">Katakana</string>
