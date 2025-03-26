@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="10dp"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -59,7 +60,7 @@
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:layout_marginEnd="20dp"
             android:onClick="onInfoClick"
@@ -112,5 +113,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
+
+    <TextView
+        android:id="@+id/txtProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="10px"
+        android:text="0%"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

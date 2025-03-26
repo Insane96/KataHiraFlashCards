@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         binding.scrGroupList.setVisibility(View.GONE);
         Collections.shuffle(chars);
         createNextCardButton();
+        binding.txtProgress.setVisibility(View.VISIBLE);
+        //binding.txtProgress.bringToFront();
     }
 
     public boolean onStartLongClick(View v) {
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
     @Override
     public void onNextCard() {
         binding.getRoot().removeView(currentCardButton);
+        binding.txtProgress.setText(String.format("%d%%", (currentChar + 1) * 100 / chars.size()));
         if (++currentChar >= chars.size()) {
             backToMain();
             return;
@@ -128,6 +131,8 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         binding.getRoot().removeView(currentCardButton);
         currentCardButton = null;
         currentChar = 0;
+        binding.txtProgress.setText("0%");
+        binding.txtProgress.setVisibility(View.INVISIBLE);
     }
 
     public CardButton.Type getTypeFromRadioButton() {
