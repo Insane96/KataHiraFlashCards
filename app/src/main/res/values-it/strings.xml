@@ -116,7 +116,8 @@
     <string name="info_title">Informazioni sull\'utilizzo</string>
     <string name="info_message">Selezionare uno o più gruppi e premere Inizia per cominciare.\nTenere premuto il pulsante \"Inizia\" invertirà la selezione</string>
     <string name="uncheck_toast">Almeno uno tra hiragana e katakana deve essere selezionato</string>
-    <string name="hira_kata">%s %s</string>
+    <string name="roomaji_to_kata_hira">%s\n%s %s</string>
+    <string name="kata_hira_to_roomaji">%s\n%s</string>
     <string name="hiragana">Hiragana</string>
     <string name="katakana">Katakana</string>
     <string name="roomaji">Roomaji</string>

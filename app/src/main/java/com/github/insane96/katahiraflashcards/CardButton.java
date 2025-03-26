@@ -48,9 +48,9 @@ public class CardButton extends AppCompatButton {
             return;
         }
         if (this.type == Type.ROOMAJI)
-            this.setText(getContext().getString(R.string.hira_kata, jChar.hiragana, jChar.katakana));
+            this.setText(getContext().getString(R.string.roomaji_to_kata_hira, jChar.roomaji, jChar.hiragana, jChar.katakana));
         else
-            this.setText(jChar.getRoomajiResId(this.getContext()));
+            this.setText(getContext().getString(R.string.kata_hira_to_roomaji, this.type == Type.HIRAGANA ? jChar.hiragana : jChar.katakana, jChar.roomaji));
         this.hasBeenFlipped = true;
     }
 
