@@ -114,7 +114,7 @@
     <string name="jchar_pyo">pyo</string>
     <string name="info_title">使用方法</string>
     <string name="info_message">1 つ以上のグループを選択し、[開始] を押して…開始します。 現在の選択を反転するには、開始を押したままにします</string>
-    <string name="uncheck_toast">ひらがなとカタカナのどちらかを選択すること</string>
+    <string name="uncheck_toast">少なくとも1つの文字タイプ（ひらがな、カタカナ、またはローマ字）を選択してください</string>
     <string name="roomaji_to_kata_hira">%s\n%s %s</string>
     <string name="kata_hira_to_roomaji">%s\n%s</string>
     <string name="hiragana">" ひらがな"</string>

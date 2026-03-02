@@ -2,8 +2,6 @@ package com.github.insane96.katahiraflashcards;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -66,12 +64,20 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         }
 
         binding.btnStart.setOnLongClickListener(this::onStartLongClick);
-        binding.chkHiragana.setOnCheckedChangeListener(this::onUnckeckHiraKata);
-        binding.chkKatakana.setOnCheckedChangeListener(this::onUnckeckHiraKata);
+        binding.chkHiragana.setOnCheckedChangeListener(this::onCheckChangedHiraKata);
+        binding.chkKatakana.setOnCheckedChangeListener(this::onCheckChangedHiraKata);
         binding.chkRoomaji.setOnCheckedChangeListener(this::onCheckRoomaji);
     }
 
     public void onStartClick(View v) {
+        if (!binding.chkHiragana.isChecked() && !binding.chkKatakana.isChecked() && !binding.chkRoomaji.isChecked()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle(R.string.select_one_title)
+                    .setMessage(R.string.uncheck_toast)
+                    .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
+            return;
+        }
         chars.clear();
         for (GroupButton button : groupButtons) {
             if (button.isActivated())
@@ -147,11 +153,8 @@ public class MainActivity extends AppCompatActivity implements CardButton.OnNext
         return CardButton.Type.HIRAGANA;
     }
 
-    private void onUnckeckHiraKata(View v, boolean b) {
-        if (!binding.chkHiragana.isChecked() && !binding.chkKatakana.isChecked()) {
-            ((CheckBox)v).setChecked(true);
-            Toast.makeText(this, R.string.uncheck_toast, Toast.LENGTH_SHORT).show();
-        }
+    private void onCheckChangedHiraKata(View v, boolean b) {
+
     }
 
     public void onCheckRoomaji(View v, boolean isChecked) {
